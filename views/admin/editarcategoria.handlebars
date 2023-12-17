@@ -1,0 +1,48 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/bootstrap.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!--O express já sabe onde está essa pasta/arquivo, pois falamos
+     no arquivo blog.js onde estão os nosso arquivos estáticos-->
+    <title>Blog</title>
+  </head>
+  <body>
+    {{>_navbar}}
+    <div class="container mt-4">
+      {{{body}}}
+      <h3>Editar Categoria</h3>
+      <div class="card">
+        <div class="card-body">
+      <form action="/admin/categorias/edit" method="POST">
+         <input name="id" type="hidden" value="{{categoria.id}}"/>
+        <label for="nome">Nome:</label>
+        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome da Categoria..." value="{{categoria.nome}}">
+        <label for="slug">Slug:</label>
+        <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da Categoria..." value="{{categoria.slug}}">
+        <br>
+        <button type="submit"  class="btn btn-success">Enviar Edição</button>
+      </form>
+      {{#each erros}}
+        <div class="alert alert-danger">{{msg}}</div> <!--Nossa propriedade com o seu X erro-->
+        {{else}}
+      {{/each}}
+      </div>
+      </div>
+    </div>
+
+  </body>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/public/js/bootstrap.js"></script>
+</html>
