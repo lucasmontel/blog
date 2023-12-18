@@ -15,6 +15,14 @@ router.get("/posts", (req, res) => {
   res.render("layouts/main");
 });
 
+router.get("/postagens", (req, res) => {
+  res.render("admin/postagens");
+});
+
+router.get("/postagens/add",(req, res)=>{
+res.render("admin/addpostagem");
+});
+
 // Rota para a página de categorias
 router.get("/categorias", (req, res) => {
   Categorias.find()
@@ -33,6 +41,7 @@ router.get("/categorias", (req, res) => {
 router.get("/categorias/add", (req, res) => {
   res.render("admin/addcategorias");
 });
+
 
 router.get("/categorias/edit/:id", (req, res) => {
   Categorias.findOne({ _id: req.params.id })
@@ -67,12 +76,12 @@ router.post("/categorias/edit", (req, res) => {
     });
 });
 
-router.post("/categorias/deletar",(req, res)=>{
-  Categorias.deleteOne({_id: req.body.id}).then(()=>{
-    req.flash("success_msg","Categoria deletada com sucesso!");
+router.post("/categorias/deletar", (req, res) => {
+  Categorias.deleteOne({ _id: req.body.id }).then(() => {
+    req.flash("success_msg", "Categoria deletada com sucesso!");
     res.redirect("/admin/categorias");
-  }).catch((err)=>{
-    req.flash("error_msg", "Erro: "+err);
+  }).catch((err) => {
+    req.flash("error_msg", "Erro: " + err);
     res.redirect("/admin/categorias");
   })
 })
