@@ -65,7 +65,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/admin", admin);
 
 //Start server:
-app.listen(3600, () => {
+app.listen(3400, () => {
   console.log("Start success!");
 });
 
