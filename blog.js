@@ -8,7 +8,7 @@ const admin = require("./routes/admin");
 const path = require("path");
 const session = require("express-session");
 const flash = require("connect-flash");
-
+console.log("Versão do mongoose: ",mongoose.version);
 //Config:
 //Session
 app.use(
@@ -27,9 +27,9 @@ app.use((req, res, next) => {
 });
 // Mongoose:
 mongoose
-  .connect("mongodb://localhost/blogapp")
+  .connect("mongodb://localhost/blogApp")
   .then(() => {
-    console.log("Conectado com Sucesso!");
+    console.log("Banco de Dados conectado :)");
   })
   .catch((erro) => {
     console.log("Não conectado, erro: " + erro);
@@ -65,7 +65,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/admin", admin);
 
 //Start server:
-app.listen(3400, () => {
+app.listen(3500, () => {
   console.log("Start success!");
 });
 
