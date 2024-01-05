@@ -68,7 +68,7 @@ app.use("/admin", admin);
 app.listen(3500, () => {
   console.log("Start success!");
 });
-
+ 
 //Public
 app.use(express.static(__dirname + "public"));
 //Aqui estamos declarando qual é a pasta dos nossos arquivos estáticos(CSS)
